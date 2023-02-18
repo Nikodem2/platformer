@@ -14,13 +14,18 @@ let fps=0, tps=0
 const gravity = 0.25;
 const player = new Player();
 
+const platform = new Platform(5,{x:128,y:512});
+
 // Kod w tej funkcji wykonuje się co klatkę
 function frameUpdate() {
     requestAnimationFrame(frameUpdate)
     fps += 1
     // Usuwa poprzednią klatkę i rysuje nową
     c.clearRect(0,0,canvas.width,canvas.height)
+    c.imageSmoothingEnabled = false;
+    c.webkitImageSmoothingEnabled = false;
     player.render()
+    platform.render();
 }
 frameUpdate();
 
