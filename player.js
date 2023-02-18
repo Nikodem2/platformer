@@ -14,7 +14,7 @@ class Player {
             x: 0,
             y: 0
         }
-        this.sprite = new Sprite("sprites/player_idle.png", {x:128,y:128}, this.size, 10)
+        this.sprite = new Sprite("sprites/player_idle.png", {x:128,y:128}, this.size, 10, true)
     }
 
     // metody gracza:
