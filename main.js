@@ -30,7 +30,11 @@ function frameUpdate() {
 frameUpdate();
 
 function tickUpdate() {
-    if (tps >= 240) return
+    if (tps >= 240) {
+        player.updatePosition();
+        movementVelocity();
+        tps = 0;
+    }
     tps += 1
 
     // Update
@@ -41,7 +45,5 @@ tickUpdate();
 setInterval(tickUpdate, 1)
 //Counters
 setInterval(()=>{
-    console.log(tps,fps);
-    tps=0
     fps=0
 }, 1000)
