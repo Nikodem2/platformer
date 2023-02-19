@@ -14,7 +14,11 @@ let fps=0, tps=0
 const gravity = 0.25;
 const player = new Player();
 
-const platform = new Platform(5,{x:128,y:512});
+
+let map = [
+    new Platform(5,{x:128,y:512}),
+    new Platform(5,{x:512,y:512})
+]
 
 // Kod w tej funkcji wykonuje się co klatkę
 function frameUpdate() {
@@ -25,16 +29,14 @@ function frameUpdate() {
     c.imageSmoothingEnabled = false;
     c.webkitImageSmoothingEnabled = false;
     player.render()
-    platform.render();
+    
+    map.forEach((obj) => {
+        obj.render();
+    })
 }
 frameUpdate();
 
 function tickUpdate() {
-    if (tps >= 240) {
-        player.updatePosition();
-        movementVelocity();
-        tps = 0;
-    }
     tps += 1
 
     // Update
@@ -42,8 +44,10 @@ function tickUpdate() {
     movementVelocity();
 }
 tickUpdate();
-setInterval(tickUpdate, 1)
+setInterval(tickUpdate, 3)
+
 //Counters
 setInterval(()=>{
     fps=0
+    tps=0
 }, 1000)
