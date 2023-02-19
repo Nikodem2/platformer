@@ -50,6 +50,13 @@ function movementVelocity() {
         player.velocity.x = 0;
     }
     if (keys.up.pressed) {
-        if (player.canJump) { player.velocity.y -= 15; }
+        if (player.canJump) { 
+            player.velocity.y -= 15;
+            if (!this.sound) {
+                fetch('./audio/jump.json')
+                .then((response) => response.json())
+                .then((json) => {this.sound = sfxr.toAudio(json); this.sound.play();});
+            } else this.sound.play();
+        }
     }
 }
