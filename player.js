@@ -14,6 +14,8 @@ class Player {
             x: 0,
             y: 0
         }
+
+        this.hitbox = new Hitbox(this.size,this.position)
         this.sprite = new Sprite("sprites/player_idle.png", {x:16,y:16}, this.size, 10, true)
     }
 
@@ -24,6 +26,8 @@ class Player {
 
     // Dodaje velocity do aktualnej pozycji (w funkcji update)
     updatePosition() {
+        this.hitbox.updatePosition(this.position)
+        console.log(this.hitbox.collides())
         //this.render();
         this.position.x += this.velocity.x
 

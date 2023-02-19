@@ -1,5 +1,5 @@
 class Sprite {
-    constructor(url, frameSize, size, speed, animated) {
+    constructor(url, frameSize, size, speed, animated, frames) {
         this.img = new Image();
         this.img.src = url
 
@@ -7,6 +7,7 @@ class Sprite {
         this.size = size
         
         this.animated = animated || false
+        this.frames = frames || Infinity
 
         this.speed = speed || 10
         this.currentFrame = 0
@@ -23,7 +24,8 @@ class Sprite {
             offset.x = offset.x % this.img.width
         }
         //If non existing frame reset to frame 0
-        if (offset.y >= this.img.height) {
+        if (offset.y >= this.img.height || this.currentFrame > this.frames) {
+            this.frames = this.currentFrame//generate amount of frames if not specified
             this.currentFrame = 0
             return this.updateAnimationFrame(x,y)
         }
