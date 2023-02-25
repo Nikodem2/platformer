@@ -16,8 +16,7 @@ const player = new Player();
 
 
 let map = [
-    new Platform(5,{x:128,y:512}),
-    new Platform(5,{x:512,y:512})
+    new Platform({x:5,y:5},{x:128,y:512}),
 ]
 
 // Kod w tej funkcji wykonuje się co klatkę
